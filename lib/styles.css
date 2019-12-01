@@ -1,0 +1,63 @@
+body {
+    background-color: #ededeb;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 30px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    text-align: left;
+    color: dimgrey;
+}
+
+
+.text {
+    padding: 0 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 0px;
+    background-color: #ededeb;
+    text-align: left;
+    text-indent: 70px;
+}
+
+path {
+    fill: lightgrey;
+    stroke: dimgrey;
+}
+
+path:hover {
+    fill: dimgrey;
+    cursor: crosshair;
+}
+
+.hover text {
+    fill: red;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.hover tspan {
+    fill: dimgrey;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+
+
+#wrapper {
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+#content {
+    padding: 0;
+    background-color: #ededeb;
+    margin: 0 1%;
+    text-align: center;
+}

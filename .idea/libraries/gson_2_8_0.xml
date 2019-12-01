@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="gson-2.8.0" type="kotlin.js">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/gson-2.8.0.jar!/" />
+    </SOURCES>
+  </library>
+</component>

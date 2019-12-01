@@ -1,0 +1,97 @@
+{
+  "id": 6695624,
+  "name": "Warszawa",
+  "country": "PL",
+  "coord": {
+    "lon": 21.04191,
+    "lat": 52.23547
+  }
+}
+{
+  "id": 3083829,
+  "name": "Szczecin",
+  "country": "PL",
+  "coord": {
+    "lon": 14.55302,
+    "lat": 53.42894
+  }
+}
+
+
+{
+  "id": 7531002,
+  "name": "Gdańsk",
+  "country": "PL",
+  "coord": {
+    "lon": 18.68976,
+    "lat": 54.361118
+  }
+},
+
+{
+"id": 3102014,
+"name": "Bydgoszcz",
+"country": "PL",
+"coord": {
+"lon": 18.00762,
+"lat": 53.123501
+}
+},
+
+{
+"id": 3337493,
+"name": "Województwo Łódzkie",
+"country": "PL",
+"coord": {
+"lon": 19.5,
+"lat": 51.5
+}
+},
+
+
+
+---
+example response
+
+{
+"coord": {
+"lon": 21.01,
+"lat": 52.23
+},
+"weather": [
+{
+"id": 803,
+"main": "Clouds",
+"description": "broken clouds",
+"icon": "04d"
+}
+],
+"base": "stations",
+"main": {
+"temp": 273.9,
+"pressure": 1023,
+"humidity": 80,
+"temp_min": 272.04,
+"temp_max": 275.37
+},
+"visibility": 10000,
+"wind": {
+"speed": 3.6,
+"deg": 270
+},
+"clouds": {
+"all": 75
+},
+"dt": 1575189230,
+"sys": {
+"type": 1,
+"id": 1713,
+"country": "PL",
+"sunrise": 1575181333,
+"sunset": 1575210471
+},
+"timezone": 3600,
+"id": 756135,
+"name": "Warsaw",
+"cod": 200
+}
