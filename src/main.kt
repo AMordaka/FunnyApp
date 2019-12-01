@@ -1,10 +1,11 @@
-import kotlinx.html.*
 import kotlinx.html.dom.create
 import kotlinx.html.js.table
 import kotlinx.html.js.tr
+import kotlinx.html.td
+import kotlinx.html.thead
+import kotlinx.html.tr
 import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
-
 
 fun drawTable(tableDiv: HTMLDivElement) {
     val province = getMockedObject()
@@ -40,26 +41,39 @@ fun main(args: Array<String>) {
 /*    window.fetch("https://openweathermap.org/data/2.5/weather?q=London&appid=b905529402432c359119e9bd9bdea823").then { res ->
         res.json().then { println(res)}
     }*/
-    test()
+    getData()
     jsMap()
-
     drawTable(document.getElementById("table") as HTMLDivElement)
-    //js("myFunction();")
 }
 
 fun getMockedObject(): List<Weather> = listOf(
-        Weather("Warsaw", WeatherDto(), MainDto(), WindDto()),
-        Weather("Lodz", WeatherDto(), MainDto(), WindDto()),
-        Weather("Gdansk", WeatherDto(), MainDto(), WindDto()),
-        Weather("Krakow", WeatherDto(), MainDto(), WindDto())
+        Weather("Łódzkie", WeatherDto(), MainDto(15.0, 500.0, 300.0, 20.0, 30.0), WindDto()),
+        Weather("Mazowieckie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Lubelskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Lubuskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Zachodniopomorskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Pomorskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Warmińsko-mazurskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Podlaskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Kujawsko-pomorskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Wielkopolskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Dolnośląskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Opolskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Śląskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Małopolskie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Podkarpackie", WeatherDto(), MainDto(), WindDto()),
+        Weather("Świętokrzyskie", WeatherDto(), MainDto(), WindDto())
+
+
 )
 
+//TODO should invoke rest api
 @JsName("dataWoj")
-fun test() : List<Weather> {
-    return getMockedObject()
+fun getData(): String {
+    return JSON.stringify(getMockedObject())
 }
 
-fun jsMap(){
+fun jsMap() {
     js("""
 	d3.select("div", "#wrapper")
 				.append("div")
@@ -92,34 +106,27 @@ fun jsMap(){
 
 
     d3.json("https://gist.githubusercontent.com/mbaba/78e2c2295c632a1f0985/raw/659ac0cf59157f94916412380ea1952f8aaf99be/woj_maps.json", function(json) {
-    var exampleData = _.dataWoj();
+        var mockData = JSON.parse(_.dataWoj());
+      	for (var i = 0; i < mockData.length; i++) {
+
+            var dataWoj = mockData[i].name;
     
-    
-     /* 	for (var i = 0; i < data.length; i++) {
-
-						var dataWoj = data[i].woj;
-
-
-						var areaWoj = parseFloat(data[i].area)
-						var populationWoj = parseFloat(data[i].population)
-						var densityWoj = parseFloat(data[i].density);
-
+            var tempWoj = parseFloat(mockData[i].main.temp);
+            var pressureWoj = parseFloat(mockData[i].main.pressure);
+            var humidityWoj = parseFloat(mockData[i].main.humidity);
 
 						for (var j = 0; j < json.features.length; j++) {
 
 							var jsonWoj = json.features[j].properties.name;
 
 							if (dataWoj == jsonWoj) {
-
-								json.features[j].properties.area = areaWoj;
-								json.features[j].properties.population = populationWoj;
-								json.features[j].properties.density = densityWoj;
-
+								json.features[j].properties.area = tempWoj;
+								json.features[j].properties.population = pressureWoj;
+								json.features[j].properties.density = humidityWoj;
 								break;
-
 							}
 						}
-					} */
+					} 
 
 
 
@@ -143,15 +150,15 @@ fun jsMap(){
 				.append("tspan")
 				.attr("x", 700)
 				.attr("dy", 25)
-				.text(function(d) { return "Area: " + formatNumbers(d.properties.area) + " sq. km"; })
+				.text(function(d) { return "Temp: " + formatNumbers(d.properties.area) + " C"; })
 				.append("tspan")
 				.attr("x", 700)
 				.attr("dy", 25)
-				.text(function(d) { return "Population: " + formatNumbers(d.properties.population); })
+				.text(function(d) { return "Ciśnienie: " + formatNumbers(d.properties.population); + " mPa" })
 				.append("tspan")
 				.attr("x", 700)
 				.attr("dy", 25)
-				.text(function(d) { return "Population density: " + d.properties.density; });
+				.text(function(d) { return "Wilgotność: " + d.properties.density; });
 
 
 		mapWoj.on("mouseover", function() {
